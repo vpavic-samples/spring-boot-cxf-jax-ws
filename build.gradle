@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.3.4.RELEASE'
+	}
+
+	repositories {
+		jcenter()
+	}
+
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+		classpath 'no.nils:wsdl2java:0.9'
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+apply plugin: 'no.nils.wsdl2java'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+	mavenLocal()
+	jcenter()
+}
+
+dependencies {
+	compile 'org.apache.cxf:cxf-spring-boot-starter-jax-ws:3.2.0-SNAPSHOT'
+}
+
+wsdl2java {
+	generatedWsdlDir = file('src/generated/java')
+	wsdlDir = file('src/main/resources/wsdl')
+	wsdlsToGenerate = [
+			["$wsdlDir/GreeterService.wsdl"]
+	]
+}
