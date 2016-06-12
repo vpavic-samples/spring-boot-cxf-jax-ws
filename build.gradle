@@ -21,12 +21,12 @@ sourceCompatibility = '1.8'
 targetCompatibility = '1.8'
 
 repositories {
-	mavenLocal()
 	jcenter()
+	maven { url 'http://repository.apache.org/snapshots' }
 }
 
 dependencies {
-	compile 'org.apache.cxf:cxf-spring-boot-starter-jax-ws:3.2.0-SNAPSHOT'
+	compile 'org.apache.cxf:cxf-spring-boot-starter-jaxws:3.1.7-SNAPSHOT'
 }
 
 wsdl2java {
